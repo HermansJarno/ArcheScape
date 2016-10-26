@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/testScenes/Room.unity
+=======
 - path: Assets/Scenes/testScenes/testKamer3op4.unity
+>>>>>>> 245ff504d305787b02f8343f6610d3aa26275bb7
   isLoaded: 1
   isActive: 1

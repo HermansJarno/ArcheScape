@@ -77,7 +77,7 @@ public class Keypad
             }
             else if (_buttons[i].name.ToUpper() == "ENTER")
             {
-                _buttons[i].onClick.AddListener(() => CheckResult(display.text));
+                _buttons[i].onClick.AddListener(() => CheckResult(obj, display.text));
             }
             else
             {
@@ -90,12 +90,12 @@ public class Keypad
     /// Checks if the input of the player was correct.
     /// </summary>
     /// <param name="input">The user's input.</param>
-    private void CheckResult(string input)
+    private void CheckResult(Transform obj, string input)
     {
         if (input == _password)
         {
             Debug.Log("Correct!");
-            Object.Destroy(transform);
+            Object.Destroy(obj);
         }
         else
         {
@@ -108,7 +108,7 @@ public class Keypad
             else
             {
                 Debug.Log("YOU LOSE!");
-                Object.Destroy(transform);
+                Object.Destroy(obj);
             }
         }
     }
