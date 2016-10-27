@@ -18,7 +18,7 @@ public class PlayerLogic : MonoBehaviour {
 
     void CalcDistance(GameObject go1, GameObject go2)
     {
-        Debug.Log(Vector3.Distance(go1.transform.position, go2.transform.position));
+        //Debug.Log(Vector3.Distance(go1.transform.position, go2.transform.position));
         if(Vector3.Distance(go1.transform.position, go2.transform.position) < 2 && Input.GetKey(KeyCode.X))
         {
             if (GameObject.Find("Keypad") == null)
