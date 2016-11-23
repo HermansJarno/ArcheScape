@@ -6,16 +6,20 @@ public class GameManager : MonoBehaviour {
 
 	public Text ammoText;
   public Text scoreText;
+  public bool useAmmo = true;
 
-	[SerializeField] private int ammo = 15;
+	[SerializeField] private int ammo = 750;
 
 	public int Ammo
 	{
 		get { return ammo; }
 		set
 		{
-			ammo = value;
-			ammoText.text = "Ammo: " + ammo.ToString();
+      if (useAmmo)
+      {
+        ammo = value;
+        ammoText.text = "Ammo: " + ammo.ToString();
+      }
 		}
 	}
 
