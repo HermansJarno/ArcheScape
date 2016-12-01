@@ -43,7 +43,8 @@ void loop(void)
     {
     //Serial.println(deltamicros);
     kmph = WHEELCIRCOMFERENCECM*36000/deltamicros;
-    Serial.println(kmph);
+    String messageToSend = (String)kmph;
+    Serial.println(messageToSend);
     //Serial.println(" km/h");
     
     }
