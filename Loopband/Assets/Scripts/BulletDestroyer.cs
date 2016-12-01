@@ -10,7 +10,7 @@ public class BulletDestroyer : MonoBehaviour {
 		if (col.gameObject.name == "schietschijf(Clone)")
 		{
 			GameObject.Find("GameManager").GetComponent<GameManager>().Score++;
-			Destroy(col.gameObject);
+      Destroy(col.gameObject);
 			Destroy(gameObject);
 		}
 	}

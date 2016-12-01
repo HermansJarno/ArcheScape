@@ -18,12 +18,6 @@ public class BulletSpawner : MonoBehaviour {
 		GameObject prefabBody = Instantiate(bulletPrefab,spawnPoint.position,GetComponentInChildren<Transform>().localRotation) as GameObject;
     prefabBody.GetComponent<Rigidbody>().AddForce(spawnPoint.transform.forward * shootSpeed);
 
-    GameObject.Find("GameManager").GetComponent<GameManager>().Ammo -= 1;
-    Debug.Log(GameObject.Find("GameManager").GetComponent<GameManager>().Ammo);
-
-    if (GameObject.Find("GameManager").GetComponent<GameManager>().Ammo > 0)
-    {
-      Invoke("Shoot", shootInterval);
-    }
+    Invoke("Shoot", shootInterval);
 	}
 }
