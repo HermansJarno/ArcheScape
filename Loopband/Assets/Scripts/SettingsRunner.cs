@@ -27,33 +27,37 @@ public class SettingsRunner : MonoBehaviour
 		//mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
 		mySerialPort.Open();
-		if (mySerialPort.IsOpen)
-		{
-			Debug.Log("Port is opened");
-		}
+    if (mySerialPort.IsOpen)
+    {
+      Debug.Log("Port is opened");
+    }
+    else
+    {
+      movementSpeed = 3;
+    }
 	}
 
-  private void Update()
+  private void FixedUpdate()
   {
     if (mySerialPort.IsOpen)
     {
 
       try
       {
-        string inData = mySerialPort.ReadLine();
-        Debug.Log(inData);
-        //double inData = double.Parse(mySerialPort.ReadLine());
-        //float tempSpeed = (float)inData;
-        //Debug.Log(tempSpeed);
-        //if ((lastSpeed - tempSpeed) < 3f || (lastSpeed - tempSpeed) > -3f)
-        //{
-        //  movementSpeed = tempSpeed;
-        //  lastSpeed = movementSpeed;
-        //}
-        //else
-        //{
-        //  Debug.Log("difference to big");
-        //}
+        //string inData = mySerialPort.ReadLine();
+        //Debug.Log(inData);
+        double inData = double.Parse(mySerialPort.ReadLine());
+        float tempSpeed = (float)inData;
+        Debug.Log(tempSpeed);
+        if ((lastSpeed - tempSpeed) < 3f || (lastSpeed - tempSpeed) > -3f)
+        {
+          movementSpeed = tempSpeed;
+          lastSpeed = movementSpeed;
+        }
+        else
+        {
+          Debug.Log("difference to big");
+        }
 
         //if (inData != "")
         //{
@@ -62,8 +66,8 @@ public class SettingsRunner : MonoBehaviour
       }
       catch (System.TimeoutException e)
       {
+        //Debug.Log(e.ToString());
         return;
-        throw;
       }
 
     }
