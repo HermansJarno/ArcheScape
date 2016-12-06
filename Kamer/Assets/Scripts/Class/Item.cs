@@ -3,26 +3,26 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Item : MonoBehaviour {
 
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private float _velocity = 20000f;
+    [SerializeField] private float _rotation = 600f;
+
+    private Rigidbody _rb;
+    private Transform _interactingPoint;
 
     private bool _isInteracting;
 
-    [SerializeField] private float _velocity = 20000f;
     private Vector3 posDelta;
 
-    [SerializeField] private float _rotation = 600f;
     private Quaternion rotationDelta;
     private float angle;
     private Vector3 axis;
 
     private ViveControllers _controller;
 
-    private Transform _interactingPoint;
-
     // Use this for initialization
     void Start () {
         _rb = GetComponent<Rigidbody>();
-        _interactingPoint = new GameObject().transform;
+        _interactingPoint = transform.FindChild(Collections.Tags.InteractionPoint.ToString());
         _velocity /= _rb.mass;
         _rotation /= _rb.mass;
 	}
@@ -57,7 +57,16 @@ public class Item : MonoBehaviour {
 
         // set position and rotation of the new gameObject
         _interactingPoint.position = c.transform.position;
-        _interactingPoint.rotation = c.transform.rotation;
+
+        // TO DO: FIRST CHECK IF IT WORKS WITH THE INTERACTIONPOINT MANUALLY PLACED IN THE SCENE
+        //if (transform.tag == Collections.Tags.Flashlight.ToString())
+        //{
+        //    transform.rotation = c.transform.rotation; //Quaternion.LookRotation(c.transform.forward);
+        //}
+        //else
+        //{
+            _interactingPoint.rotation = c.transform.rotation;
+        //}
 
         // make sure it's a child of the gameobject which we are colliding with
         // so it moves and turns around with the controller
