@@ -27,9 +27,9 @@ public class PlayerHandler : MonoBehaviour
     /// </summary>
     private void See()
     {
-        int x = Screen.width / 2, y = Screen.height / 2;
-
-        Ray ray = _camera.GetComponent<Camera>().ScreenPointToRay(new Vector2(x, y));
+        // shoot ray from viewport point
+        // viewport vectors are normalized (so bounds are 0 - 1 -> alongside x and y, so 0.5 is center of the viewport)
+        Ray ray = _camera.ViewportPointToRay(new Vector2(0.5f,0.5f));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, _seeDistance))
@@ -47,19 +47,19 @@ public class PlayerHandler : MonoBehaviour
                 // set the color of the crosshair to green
                 _uim.SetCrosshairColor(_uim.Green);
             }
-        }
-        else // we didn't hit an object that's interactable
-        {
-            // only do this when the color of the crosshair is not pink
-            if (_uim.Crosshair.color != _uim.Pink)
+            else // we didn't hit an object that's interactable
             {
-                _uim.Crosshair.color = _uim.Pink;
-            }
+                // only do this when the color of the crosshair is not pink
+                if (_uim.Crosshair.color != _uim.Pink)
+                {
+                    _uim.Crosshair.color = _uim.Pink;
+                }
 
-            // only do this when the label is visible
-            if (_uim.Label.color != Color.clear)
-            {
-                _uim.FadeLabel(Color.clear);
+                // only do this when the label is visible
+                if (_uim.Label.color != Color.clear)
+                {
+                    _uim.FadeLabel(Color.clear);
+                }
             }
         }
     }

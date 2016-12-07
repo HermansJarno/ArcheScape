@@ -4,6 +4,12 @@ using System.Collections.Generic;
 public class TextureDivider : MonoBehaviour
 {
     /// <summary>
+    /// The clip the puzzle piece should get when colliding with an other gameobject.
+    /// </summary>
+    [Tooltip("The clip the puzzle piece should get when colliding with an other gameobject.")]
+    [SerializeField] private AudioClip _clip;
+    [Space(UIManager._SPACE)]
+    /// <summary>
     /// The texture to be divided into pieces.
     /// </summary>
     [Tooltip("The texture which will be divided.")]
@@ -107,6 +113,8 @@ public class TextureDivider : MonoBehaviour
             obj.AddComponent(typeof(Item));
             obj.AddComponent(typeof(BoxCollider));
             obj.GetComponent<Rigidbody>().mass = 2.3f;
+
+            obj.GetComponent<Item>().Clip = _clip;
 
             GameObject interactingPoint = new GameObject(Collections.Tags.InteractionPoint.ToString());
             interactingPoint.transform.SetParent(obj.transform, false);

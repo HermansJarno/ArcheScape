@@ -70,6 +70,7 @@ public class ViveControllers : MonoBehaviour {
     private void OnTriggerEnter(Collider collider)
     {
         Item collidedItem = collider.GetComponent<Item>();
+        Debug.Log("ENTER: " + collider.gameObject.name);
 
         // when we collided with an item that's interactable
         if (collidedItem)
@@ -81,6 +82,9 @@ public class ViveControllers : MonoBehaviour {
     private void OnTriggerExit(Collider collider)
     {
         Item collidedItem = collider.GetComponent<Item>();
+
+        Debug.Log("EXIT :" + collider.gameObject.name);
+
 
         // when we collided with an item that's interactable
         if (collidedItem)

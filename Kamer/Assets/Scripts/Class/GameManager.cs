@@ -3,8 +3,6 @@
 [RequireComponent(typeof(UIManager))]
 public class GameManager : MonoBehaviour
 {
-    
-
     /// <summary>
     /// Gameobject on which the UIManager component is attached to.
     /// </summary>

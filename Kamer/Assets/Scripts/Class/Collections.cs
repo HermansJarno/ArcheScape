@@ -6,7 +6,8 @@
         GameController,
         Environment,
         Flashlight,
-        SpawnPoint
+        SpawnPoint,
+        AudioManager
     }
 
     public enum Scenes
